@@ -59,7 +59,7 @@ public class CustomInventoryHolder implements InventoryHolder {
                     placeItemStack = customItemPattern.getItemStack();
                 }
                 if (placeItemStack.getType().equals(Material.AIR)) continue;
-                inventory.setItem(i * (patternIndex + 1), placeItemStack);
+                inventory.setItem(i + (patternIndex * 9), placeItemStack);
             }
         }
         this.inventory = inventory;
