@@ -28,6 +28,7 @@ public class CustomInventoryListener implements Listener {
             int slot = e.getSlot();
             CustomItemClickSlot customItemClickSlot = customItemClickEvent.getCustomItemClickSlotFromSlot(slot);
             if (customItemClickSlot != null) {
+                if (customItemClickSlot.isCancel()) e.setCancelled(true);
                 InventoryAction eventAction = customItemClickSlot.getInventoryAction();
                 if (eventAction == null || eventAction.equals(inventoryAction)) {
                     customItemClickSlot.getClickRunnable().run(e);
@@ -36,6 +37,7 @@ public class CustomInventoryListener implements Listener {
             if (clickedItem != null) {
                 CustomItemClickItemStack customItemClickItemStack = customItemClickEvent.getCustomItemClickItemStackFromItemStack(clickedItem);
                 if (customItemClickItemStack != null) {
+                    if (customItemClickItemStack.isCancel()) e.setCancelled(true);
                     InventoryAction eventAction = customItemClickItemStack.getInventoryAction();
                     if (eventAction == null || eventAction.equals(inventoryAction)) {
                         customItemClickItemStack.getClickRunnable().run(e);
@@ -44,6 +46,7 @@ public class CustomInventoryListener implements Listener {
                 if (NBTEditor.contains(clickedItem, "CustomItemClickEvent")) {
                     CustomItemClickTag customItemClickTag = customItemClickEvent.getCustomItemClickTagFromTag(NBTEditor.getString(clickedItem, "CustomItemClickEvent"));
                     if (customItemClickTag != null) {
+                        if (customItemClickTag.isCancel()) e.setCancelled(true);
                         InventoryAction eventAction = customItemClickTag.getInventoryAction();
                         if (eventAction == null || eventAction.equals(inventoryAction)) {
                             customItemClickTag.getClickRunnable().run(e);
