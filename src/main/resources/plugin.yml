@@ -1,0 +1,6 @@
+name: CustomInventory
+version: '${project.version}'
+main: run.tere.api.custominventory.CustomInventory
+api-version: 1.16
+authors: [ tererun ]
+description: CustomInventory
