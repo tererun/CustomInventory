@@ -56,6 +56,8 @@ public class CustomInventoryListener implements Listener {
                         }
                     }
                 }
+            } else {
+                e.setCancelled(true);
             }
         }
     }
